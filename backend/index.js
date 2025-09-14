@@ -14,7 +14,7 @@ const upload = multer({ dest: "uploads/" });
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://rag-ai-pdfchecker.vercel.app",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })
@@ -78,3 +78,4 @@ Resume Content: ${pdfData}
 app.listen(port, () => {
   console.log(`✅ Server running at http://localhost:${port}`);
 });
+
