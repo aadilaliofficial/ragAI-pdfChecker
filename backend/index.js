@@ -14,11 +14,15 @@ const upload = multer({ dest: "uploads/" });
 
 app.use(
   cors({
-    origin: "https://rag-ai-pdfchecker.vercel.app",
+    origin: [
+      "http://localhost:5173", 
+      "https://rag-ai-pdfchecker.vercel.app"
+    ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })
 );
+
 app.use(express.json());
 
 // gemini client
@@ -37,7 +41,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
     res.json({
       message: "PDF uploaded successfully",
-      pdfUrl: `http://localhost:${port}/pdf/${req.file.filename}`,
+      pdfUrl: `${req.protocol}://${req.get("host")}/pdf/${req.file.filename}`, // ✅ fixed
     });
   } catch (err) {
     console.error(err);
@@ -78,4 +82,3 @@ Resume Content: ${pdfData}
 app.listen(port, () => {
   console.log(`✅ Server running at http://localhost:${port}`);
 });
-
