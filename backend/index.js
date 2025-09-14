@@ -41,7 +41,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
     res.json({
       message: "PDF uploaded successfully",
-      pdfUrl: `${req.protocol}://${req.get("host")}/pdf/${req.file.filename}`, // ✅ fixed
+      pdfUrl: `https://ragai-pdfchecker.onrender.com/pdf/${req.file.filename}`
     });
   } catch (err) {
     console.error(err);
@@ -82,4 +82,5 @@ Resume Content: ${pdfData}
 app.listen(port, () => {
   console.log(` Server running at http://localhost:${port}`);
 });
+
 
