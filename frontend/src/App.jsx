@@ -21,13 +21,13 @@ function App() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await axios.post("http://localhost:5000/upload", formData);
+    const res = await axios.post("https://ragai-pdfchecker.onrender.com/upload", formData);
     setPdfUrl(res.data.pdfUrl);
   };
 
   const handleSend = async () => {
     if (!input.trim()) return;
-    const res = await axios.post("http://localhost:5000/chat", {
+    const res = await axios.post("https://ragai-pdfchecker.onrender.com/chat", {
       question: input,
     });
     setChat((prev) => [...prev, { q: input, a: res.data.answer }]);
