@@ -16,7 +16,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173", 
-      "https://rag-ai-pdfchecker.vercel.app"
+      "https://rag-ai-pdf-checker.vercel.app"
     ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
@@ -80,5 +80,6 @@ Resume Content: ${pdfData}
 
 // server status
 app.listen(port, () => {
-  console.log(`✅ Server running at http://localhost:${port}`);
+  console.log(` Server running at http://localhost:${port}`);
 });
+
